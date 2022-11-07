@@ -1,4 +1,8 @@
-# Getting Started with Create React App
+# Basic Rolodex App
+
+Pulls from a simple API to display it.
+Has a basic filter() on a map.
+In progress at time of initial commit.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
