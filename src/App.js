@@ -1,11 +1,12 @@
 import { Component } from "react";
 
-import logo from "./logo.svg";
+import CardList from "./components/card-list/card-list.component";
+import SearchBox from "./components/search-box/search-box.component";
+
 import "./App.css";
 
 class App extends Component {
   constructor() {
-    console.log("constructor");
     super(); //calls the constructor of whatever this current class is extending from
 
     this.state = {
@@ -15,7 +16,6 @@ class App extends Component {
   }
 
   componentDidMount() {
-    console.log("componentDidMount");
     fetch("https://jsonplaceholder.typicode.com/users")
       .then((response) => response.json())
       .then((users) =>
@@ -40,8 +40,6 @@ class App extends Component {
   }
 
   render() {
-    console.log("render");
-
     const {monsters, searchField} = this.state; //cast things to variables
     const {onSearchChange} = this; //cast to variable to make useage shorter later
 
@@ -51,19 +49,10 @@ class App extends Component {
 
     return (
       <div className="App">
-        <input
-          className="search-box"
-          type="search"
-          placeholder="search monsters"
-          onChange={onSearchChange}
-        />
-        {filteredMonsters.map((monster) => {
-          return (
-            <div key={monster.id}>
-              <h1>{monster.name}</h1>
-            </div>
-          );
-        })}
+        <h1 className="app-title">Monsters Rolodex</h1>
+
+        <SearchBox className = {"monsters-search-box"} onChangeHandler={onSearchChange} placeholder={"Search Monsters"}/>
+        <CardList monsters={filteredMonsters}/>
       </div>
     );
   }
